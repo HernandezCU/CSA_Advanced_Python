@@ -7,20 +7,17 @@ from CSV_Example import *
 data = APIRouter(prefix="/data")
 
 app = FastAPI()
-
+x = import_data()
 @app.get("/", response_class=HTMLResponse)
 def read_root():
-    some_file_path = "c&mAuctions.jpg"
-    def iterfile():
-        with open(some_file_path, mode="rb") as file_like:
-            yield from file_like
-
-    return StreamingResponse(iterfile(), media_type="image")
+    return """
+    <h1>Welcome</h1>
+    <body>Docs can be found at /docs</body>
+    """
 
 
 @data.get("/get_id")
 def get_by_id(id: int):
-    x = import_data()
     z = find_by_id(x, id)
     if z != None:
         return {
