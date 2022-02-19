@@ -47,7 +47,8 @@ body, html {height: 100%}
 @data.get("/get_id")
 def get_by_id(id: int):
     z = find_by_id(x, id)
-    if z != None:
+
+    if z is not None:
         return {
             "code": 200,
             "message": "success",
